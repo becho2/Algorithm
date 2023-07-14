@@ -15,12 +15,17 @@ function solution(name, yearning, photo) {
 
   answer = photo.map((item) => {
     return item.reduce((acc, cur) => {
-      var yearningIndex = name.findIndex((element) => element === cur);
-      if (yearningIndex !== -1) {
-        acc += yearning[yearningIndex];
-      }
-      return acc;
+      return (acc += yearning[name.indexOf(cur)] ?? 0);
     }, 0);
   });
   return answer;
 }
+
+var names = ["may", "kein", "kain", "radi"];
+var yearning = [5, 10, 1, 3];
+var photo = [
+  ["may", "kein", "kain", "radi"],
+  ["may", "kein", "brin", "deny"],
+  ["kon", "kain", "may", "coni"],
+];
+console.log(solution(names, yearning, photo));
