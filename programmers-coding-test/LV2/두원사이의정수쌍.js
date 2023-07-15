@@ -48,6 +48,32 @@ function solution(r1, r2) {
   return answer;
 }
 
+// 이 풀이에서는 굳이 x축, y축 위의 점들을 먼저 구해놓을 필요가 없는 점을 개선한 version
+function solution(r1, r2) {
+  let answer = 0;
+  if (r1 < 1 || r2 < r1) return 0;
+
+  let 일사분면 = 0;
+  let 최대y = 0;
+  let 최소y = 0;
+  for (let x = 1; x <= r2; x++) {
+    // r2 원 위에 있는 점의 y좌표를 구한 뒤 내림하여 그보다 작은 최대정수 y값 계산
+    최대y = Math.floor(Math.sqrt(Math.pow(r2, 2) - Math.pow(x, 2)));
+    if (x >= r1) {
+      // x가 r1보다 크거나 같으면 0부터 최대y값까지 다 해당되므로 최소y값 구할 필요 없음
+      일사분면 += 최대y + 1;
+    } else {
+      // r1 원 위에 있는 점의 y좌표를 구한 뒤 올림하여 가능한 최소 정수 y값을 계산
+      최소y = Math.ceil(Math.sqrt(Math.pow(r1, 2) - Math.pow(x, 2)));
+      일사분면 += 최대y - 최소y + 1;
+    }
+  }
+
+  answer += 일사분면 * 4;
+
+  return answer;
+}
+
 /********************** 아래는 도전과 실패 사례 ******************/
 
 /**
