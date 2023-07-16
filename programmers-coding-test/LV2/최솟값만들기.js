@@ -24,12 +24,14 @@ A에서 세번째 숫자인 2, B에서 두번째 숫자인 4를 뽑아 곱하여
  */
 function solution(A, B) {
   let answer = 0;
-  const sortedA = A.sort((a, b) => a - b);
-  const sortedB = B.sort((a, b) => b - a);
-  const length = sortedA.length;
+  // (다른 사람 풀이 본 뒤) 코드개선 -> sort 메서드는 원본 array 자체를 바꿔버리기 때문에 변수에 따로 저장하지 않고 그대로 사용할 수 있음
+  // const sortedA =
+  A.sort((a, b) => a - b);
+  B.sort((a, b) => b - a);
+  const length = A.length;
   for (let i = 0; i < length; i++) {
-    answer += sortedA[i] * sortedB[i];
-  }
+    answer += A[i] * B[i];
+  } // (다른 사람 풀이) for 대신 reduce 메서드 사용 가능 (코드 줄 수 감소)
 
   return answer;
 }
