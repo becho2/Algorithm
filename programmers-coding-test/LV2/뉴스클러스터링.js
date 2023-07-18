@@ -91,6 +91,9 @@ const makeArrForJ = (str) => {
  * 1. 내가 만든 makeArrForJ를 substr을 이용해 훨씬 간단하게 만든 explode라는 함수 정의를 solution함수 내에서 만들어 쓴 것 (함수 내용은 아래)
  * 2. 굳이 진짜 교집합, 합집합을 진짜 실제 원소들을 채워서 만들지 않고 교집합, 합집합의 개수(배열길이)만 구해서 계산하면 더 간단하다.
  * 어차피 결과는 두 집합의 길이를 나눠서 숫자만 나오는 것이므로.
+ * 3. if ((matchResult = twoChar.match(/[a-z]+/g))) {
+      if (matchResult[0].length > 1) arrForJ.push(matchResult[0]);
+    } 이 부분도 if의 match에서 정규식을 /[a-z]{3}/를 썼으면 if 한방에 해결되는 걸 엄청 복잡하게 만들었다는 걸 알게 됐다.
  */
 function explode(text) {
   const result = [];
