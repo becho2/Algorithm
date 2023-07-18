@@ -93,7 +93,7 @@ const makeArrForJ = (str) => {
  * 어차피 결과는 두 집합의 길이를 나눠서 숫자만 나오는 것이므로.
  * 3. if ((matchResult = twoChar.match(/[a-z]+/g))) {
       if (matchResult[0].length > 1) arrForJ.push(matchResult[0]);
-    } 이 부분도 if의 match에서 정규식을 /[a-z]{3}/를 썼으면 if 한방에 해결되는 걸 엄청 복잡하게 만들었다는 걸 알게 됐다.
+    } 이 부분도 if의 match에서 정규식을 /[a-z]{2}/를 썼으면 if 한방에 해결되는 걸 엄청 복잡하게 만들었다는 걸 알게 됐다.
  */
 function explode(text) {
   const result = [];
