@@ -1,4 +1,31 @@
 /**
+ * 통과했지만 코드도 너무 길고 마음에 들지 않아 리팩토링
+ */
+function solution(n, words) {
+  let indexOfWrong = 0;
+  const alreadyWords = [words[0]];
+  const wordsLength = words.length;
+  for (let i = 1; i < wordsLength; i++) {
+    if (
+      words[i - 1].charAt(words[i - 1].length - 1) !== words[i].charAt(0) ||
+      alreadyWords.indexOf(words[i]) > -1
+    ) {
+      indexOfWrong = i;
+      break;
+    } else {
+      alreadyWords.push(words[i]);
+    }
+  }
+  if (indexOfWrong === 0) return [0, 0];
+
+  const answerOrder = indexOfWrong + 1;
+  let personNumber;
+  personNumber = answerOrder % n;
+
+  return [personNumber === 0 ? n : personNumber, Math.ceil(answerOrder / n)];
+}
+
+/**
  * 사람의 수 n과 사람들이 순서대로 말한 단어 words 가 매개변수로 주어질 때, 가장 먼저 탈락하는 사람의 번호와 그 사람이 자신의 몇 번째 차례에 탈락하는지를 구해서 return 하도록 solution 함수를 완성해주세요.
 
 제한 사항
